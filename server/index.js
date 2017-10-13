@@ -306,10 +306,6 @@ app.post('/restaurants', (req, res) => {
       restaurantInfo.managerId = managerId;
       dbQuery.addRestaurant(restaurantInfo);
     })
-  dbQuery.addRestaurant(testData.restaurant)
-    .then((results) => {
-      res.sendStatus(201);
-    })
     .catch((err) => {
       console.log('Error POST /restaurants ', err);
       res.sendStatus(401);

@@ -38,7 +38,7 @@ class ManagerApp extends React.Component {
 
   switchStatus() {
     $.ajax({
-      url: '/restaurants?restaurantId=1&status=' + (this.state.restaurantInfo.status === 'Open' ? 'Closed' : 'Open'),
+      url: `/restaurants?restaurantId=${this.state.restaurantId}&status=` + (this.state.restaurantInfo.status === 'Open' ? 'Closed' : 'Open'),
       method: 'PATCH',
       success: (data) => {
         console.log(data);
@@ -59,7 +59,7 @@ class ManagerApp extends React.Component {
 
   addToQueue(customer) {
     console.log('here to add', customer);
-    customer.restaurantId = 1;
+    customer.restaurantId = this.state.restaurantId;
     $.ajax({
       method: 'POST',
       url: '/queues',
